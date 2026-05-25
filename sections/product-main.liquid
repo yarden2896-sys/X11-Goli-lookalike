@@ -148,15 +148,14 @@
   </div>
 
   <!-- Related products -->
-  {%- assign related = recommendations.products | limit: 4 -%}
-  {%- if related.size > 0 -%}
+  {%- if recommendations.products.size > 0 -%}
   <div class="container">
     <div class="section-header" style="margin-top:64px">
       <span class="eyebrow">You Might Also Like</span>
       <h2>More From X11</h2>
     </div>
     <div class="product-grid">
-      {%- for rec in related -%}
+      {%- for rec in recommendations.products limit: 4 -%}
         {%- render 'product-card', product: rec -%}
       {%- endfor -%}
     </div>
