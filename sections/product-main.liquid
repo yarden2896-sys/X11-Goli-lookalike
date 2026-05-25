@@ -72,7 +72,7 @@
       {%- endunless -%}
 
       <!-- Add to cart form -->
-      {%- form 'product', product, id: 'product-form', data-product-form: '' -%}
+      {%- form 'product', product, id: 'product-form' -%}
         <input type="hidden" name="id" id="variant-id" value="{{ selected_variant.id }}" />
 
         <div class="pi-qty-row">
