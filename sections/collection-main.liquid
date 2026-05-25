@@ -8,7 +8,7 @@
       {%- else -%}
         <p class="coll-desc">Premium gummy supplements for peak performance. Clean ingredients. Clinical doses. Flavours you'll love.</p>
       {%- endif -%}
-      <div class="coll-meta">{{ collection.products_count }} product{{ collection.products_count | plural: '', 's' }}</div>
+      <div class="coll-meta">{{ collection.products_count }} product{%- if collection.products_count != 1 -%}s{%- endif -%}</div>
     </div>
   </div>
 

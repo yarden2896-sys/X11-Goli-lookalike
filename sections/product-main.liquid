@@ -61,9 +61,7 @@
                 {%- for value in option.values -%}
                   <button class="pi-option-btn {% if option.selected_value == value %}active{% endif %}"
                           data-option="{{ option.position }}"
-                          data-value="{{ value | escape }}"
-                          {% unless product.variants | where: 'option' + option.position, value | first -%}
-                          {%- endunless %}>
+                          data-value="{{ value | escape }}">
                     {{ value }}
                   </button>
                 {%- endfor -%}
