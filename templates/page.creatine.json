@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "home",
+      "type": "landing-page",
       "settings": {}
     }
   },

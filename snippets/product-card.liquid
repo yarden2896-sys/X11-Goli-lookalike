@@ -1,0 +1,41 @@
+{%- liquid
+  assign card_product = product
+  assign card_url = card_product.url
+  assign card_image = card_product.featured_image
+  assign card_price = card_product.price
+  assign card_compare = card_product.compare_at_price
+-%}
+<div class="product-card">
+  <a href="{{ card_url }}" class="product-card-img-wrap">
+    {%- if card_image -%}
+      <img src="{{ card_image | img_url: '400x500', crop: 'center' }}"
+           srcset="{{ card_image | img_url: '400x500', crop: 'center' }} 400w,
+                   {{ card_image | img_url: '600x750', crop: 'center' }} 600w"
+           sizes="(max-width: 640px) calc(100vw - 32px), 300px"
+           alt="{{ card_image.alt | default: card_product.title | escape }}"
+           loading="lazy"
+           width="400" height="500" />
+    {%- else -%}
+      <div class="pc-img-placeholder"></div>
+    {%- endif -%}
+    {%- if card_product.tags contains 'bestseller' or forloop.first -%}
+      <span class="pc-badge">Best Seller</span>
+    {%- elsif card_compare > card_price -%}
+      <span class="pc-badge pc-badge-sale">Sale</span>
+    {%- endif -%}
+  </a>
+  <div class="product-card-body">
+    <div class="pc-stars">★★★★★ <span class="pc-count">(2,400+)</span></div>
+    <h3 class="pc-title"><a href="{{ card_url }}">{{ card_product.title }}</a></h3>
+    {%- if card_product.description != blank -%}
+      <p class="pc-desc">{{ card_product.description | strip_html | truncate: 90 }}</p>
+    {%- endif -%}
+    <div class="pc-pricing">
+      <span class="pc-price">{{ card_price | money }}</span>
+      {%- if card_compare > card_price -%}
+        <span class="pc-original">{{ card_compare | money }}</span>
+      {%- endif -%}
+    </div>
+    <a href="{{ card_url }}" class="btn btn-primary pc-cta">Shop Now</a>
+  </div>
+</div>

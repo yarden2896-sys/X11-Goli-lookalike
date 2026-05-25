@@ -1,0 +1,95 @@
+<!-- ═══════════ CART PAGE ═══════════ -->
+<div class="cart-main">
+  <div class="container">
+    <h1 class="cart-page-title">Your Cart</h1>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="cart-page-empty">
+        <div class="cpe-icon">🛒</div>
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added anything yet.</p>
+        <a href="/collections/all" class="btn btn-primary">Start Shopping</a>
+      </div>
+    {%- else -%}
+      {%- form 'cart', cart, id: 'cart-form' -%}
+        <div class="cart-page-layout">
+          <div class="cart-items">
+            {%- for item in cart.items -%}
+              <div class="cp-item" data-key="{{ item.key }}">
+                {%- if item.image -%}
+                  <a href="{{ item.url }}" class="cp-item-img-wrap">
+                    <img src="{{ item.image | img_url: '150x188', crop: 'center' }}" alt="{{ item.title | escape }}" loading="lazy" />
+                  </a>
+                {%- endif -%}
+                <div class="cp-item-details">
+                  <a href="{{ item.url }}" class="cp-item-title">{{ item.product.title }}</a>
+                  {%- unless item.variant.title == 'Default Title' -%}
+                    <div class="cp-item-variant">{{ item.variant.title }}</div>
+                  {%- endunless -%}
+                  <div class="cp-item-price">{{ item.final_price | money }}</div>
+
+                  <div class="cp-qty-row">
+                    <div class="cp-qty">
+                      <button type="button" class="qty-btn cp-qty-btn" data-action="decrease" data-key="{{ item.key }}" data-qty="{{ item.quantity }}">−</button>
+                      <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" max="99"
+                             class="cp-qty-input" data-key="{{ item.key }}" aria-label="Quantity for {{ item.title | escape }}" />
+                      <button type="button" class="qty-btn cp-qty-btn" data-action="increase" data-key="{{ item.key }}" data-qty="{{ item.quantity }}">+</button>
+                    </div>
+                    <button type="button" class="cp-remove" data-key="{{ item.key }}" aria-label="Remove {{ item.title | escape }}">Remove</button>
+                  </div>
+                </div>
+                <div class="cp-item-subtotal">{{ item.final_line_price | money }}</div>
+              </div>
+            {%- endfor -%}
+          </div>
+
+          <div class="cart-summary">
+            <!-- Free shipping progress -->
+            {%- assign free_threshold = 5000 -%}
+            {%- assign remaining = free_threshold | minus: cart.total_price -%}
+            {%- if remaining > 0 -%}
+              <div class="cart-fs-progress">
+                <p>Add <strong>{{ remaining | money }}</strong> more for <strong>free shipping</strong></p>
+                <div class="fsb-track">
+                  <div class="fsb-fill" style="width:{{ cart.total_price | times: 100 | divided_by: free_threshold | at_most: 100 }}%"></div>
+                </div>
+              </div>
+            {%- else -%}
+              <div class="cart-fs-progress cart-fs-unlocked">✓ You've unlocked free shipping!</div>
+            {%- endif -%}
+
+            <div class="cart-summary-box">
+              <div class="cs-row">
+                <span>Subtotal</span>
+                <strong>{{ cart.total_price | money }}</strong>
+              </div>
+              <div class="cs-row cs-note">
+                <span>Shipping calculated at checkout</span>
+              </div>
+              <a href="{{ routes.checkout_url }}" class="btn btn-primary btn-checkout">
+                Proceed to Checkout →
+              </a>
+              <a href="/collections/all" class="cart-continue-link">← Continue Shopping</a>
+            </div>
+
+            <!-- Upsell: if total < $80, suggest 3-bottle bundle -->
+            {%- if cart.total_price < 8000 -%}
+            <div class="cart-upsell">
+              <div class="cu-label">💡 Bundle &amp; Save</div>
+              <p>Add a 3-bottle bundle and <strong>save $25</strong> compared to buying separately.</p>
+              <a href="/products/x11-vegan-creatine-monohydrate-gummies-5000mg-strength-recovery" class="btn btn-outline cu-btn">Add Bundle</a>
+            </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endform -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Main",
+  "settings": []
+}
+{% endschema %}

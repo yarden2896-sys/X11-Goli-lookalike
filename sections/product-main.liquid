@@ -1,0 +1,174 @@
+<!-- ═══════════ PRODUCT PAGE ═══════════ -->
+<div class="product-main">
+  <div class="container product-inner">
+
+    <!-- Gallery -->
+    <div class="product-gallery">
+      <div class="pg-main" id="pg-main">
+        {%- if product.featured_image -%}
+          <img src="{{ product.featured_image | img_url: '700x875', crop: 'center' }}"
+               alt="{{ product.featured_image.alt | default: product.title | escape }}"
+               id="pg-main-img"
+               loading="eager"
+               width="700" height="875" />
+        {%- endif -%}
+      </div>
+      {%- if product.images.size > 1 -%}
+      <div class="pg-thumbs" id="pg-thumbs">
+        {%- for image in product.images limit: 6 -%}
+          <button class="pg-thumb {% if forloop.first %}active{% endif %}"
+                  data-src="{{ image | img_url: '700x875', crop: 'center' }}"
+                  data-alt="{{ image.alt | default: product.title | escape }}"
+                  aria-label="View image {{ forloop.index }}">
+            <img src="{{ image | img_url: '120x150', crop: 'center' }}" alt="" loading="lazy" />
+          </button>
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Product info -->
+    <div class="product-info">
+      <div class="pi-breadcrumb">
+        <a href="/collections/all">All Products</a> / {{ product.title }}
+      </div>
+
+      <div class="pi-stars">★★★★★ <span class="pi-review-count">4.9 (2,400+ reviews)</span></div>
+      <h1 class="pi-title">{{ product.title }}</h1>
+
+      {%- assign selected_variant = product.selected_or_first_available_variant -%}
+      <div class="pi-pricing" id="pi-pricing">
+        <span class="pi-price" id="pi-price">{{ selected_variant.price | money }}</span>
+        {%- if selected_variant.compare_at_price > selected_variant.price -%}
+          <span class="pi-compare" id="pi-compare">{{ selected_variant.compare_at_price | money }}</span>
+          <span class="pi-save-badge">
+            Save {{ selected_variant.compare_at_price | minus: selected_variant.price | money }}
+          </span>
+        {%- endif -%}
+      </div>
+
+      {%- if product.description != blank -%}
+        <div class="pi-desc">{{ product.description }}</div>
+      {%- endif -%}
+
+      <!-- Variant selectors -->
+      {%- unless product.has_only_default_variant -%}
+        <div class="pi-variants">
+          {%- for option in product.options_with_values -%}
+            <div class="pi-option">
+              <label class="pi-option-label">{{ option.name }}</label>
+              <div class="pi-option-values" role="group" aria-label="{{ option.name }}">
+                {%- for value in option.values -%}
+                  <button class="pi-option-btn {% if option.selected_value == value %}active{% endif %}"
+                          data-option="{{ option.position }}"
+                          data-value="{{ value | escape }}"
+                          {% unless product.variants | where: 'option' + option.position, value | first -%}
+                          {%- endunless %}>
+                    {{ value }}
+                  </button>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endunless -%}
+
+      <!-- Add to cart form -->
+      {%- form 'product', product, id: 'product-form', data-product-form: '' -%}
+        <input type="hidden" name="id" id="variant-id" value="{{ selected_variant.id }}" />
+
+        <div class="pi-qty-row">
+          <div class="pi-qty">
+            <button type="button" class="qty-btn" id="qty-decrease" aria-label="Decrease quantity">−</button>
+            <input type="number" name="quantity" value="1" min="1" max="99" id="qty-input" aria-label="Quantity" />
+            <button type="button" class="qty-btn" id="qty-increase" aria-label="Increase quantity">+</button>
+          </div>
+          <button type="submit"
+                  name="add"
+                  class="btn btn-primary pi-atc"
+                  id="pi-atc-btn"
+                  {% unless selected_variant.available %}disabled{% endunless %}>
+            {%- if selected_variant.available -%}
+              Add to Cart
+            {%- else -%}
+              Sold Out
+            {%- endif -%}
+          </button>
+        </div>
+
+        <div class="pi-atc-feedback" id="pi-atc-feedback" aria-live="polite"></div>
+      {%- endform -%}
+
+      <!-- Trust badges -->
+      <div class="pi-trust">
+        <div class="pi-trust-item">🔒 Secure Checkout</div>
+        <div class="pi-trust-item">🚚 Free Shipping $50+</div>
+        <div class="pi-trust-item">↩ 30-Day Returns</div>
+        <div class="pi-trust-item">🌱 100% Vegan</div>
+      </div>
+
+      <!-- Product highlights -->
+      <div class="pi-highlights">
+        <div class="pi-highlight">💪 5,000mg Creatine Monohydrate per serving</div>
+        <div class="pi-highlight">🍓 Delicious Strawberry Flavour — no chalk, no grit</div>
+        <div class="pi-highlight">🌿 100% Vegan — plant-based pectin, no animal gelatin</div>
+        <div class="pi-highlight">🧪 Lab tested, Made in USA, GMP certified</div>
+        <div class="pi-highlight">✈ 60 gummies (30 servings) per bottle</div>
+      </div>
+    </div><!-- /product-info -->
+  </div>
+
+  <!-- Product details tabs -->
+  <div class="container">
+    <div class="pi-tabs">
+      <div class="pi-tab-nav" role="tablist">
+        <button class="pi-tab-btn active" role="tab" aria-selected="true" data-tab="description">Description</button>
+        <button class="pi-tab-btn" role="tab" aria-selected="false" data-tab="ingredients">Ingredients</button>
+        <button class="pi-tab-btn" role="tab" aria-selected="false" data-tab="shipping">Shipping</button>
+      </div>
+      <div class="pi-tab-panels">
+        <div class="pi-tab-panel active" id="tab-description" role="tabpanel">
+          {%- if product.description != blank -%}
+            {{ product.description }}
+          {%- else -%}
+            <p>X11 Creatine Monohydrate Gummies deliver 5,000mg of pure creatine per serving in a delicious strawberry gummy. No mixing, no mess, no animal gelatin. Lab tested, made in the USA.</p>
+          {%- endif -%}
+        </div>
+        <div class="pi-tab-panel" id="tab-ingredients" role="tabpanel">
+          <p><strong>Active Ingredient:</strong> Creatine Monohydrate 5,000mg</p>
+          <p><strong>Other Ingredients:</strong> Tapioca Syrup, Sugar, Water, Pectin, Citric Acid, Natural Flavors, Sodium Citrate, Red Beet Juice (for color).</p>
+          <p>Free from: Gluten, Dairy, Soy, Animal Gelatin, Artificial Colors, Artificial Preservatives.</p>
+        </div>
+        <div class="pi-tab-panel" id="tab-shipping" role="tabpanel">
+          <p>📦 Orders ship within <strong>24 hours</strong> on business days.</p>
+          <p>🚚 <strong>Free Standard Shipping</strong> on orders over $50.</p>
+          <p>⚡ <strong>Express Shipping</strong> available at checkout.</p>
+          <p>↩ <strong>30-Day Money-Back Guarantee</strong> — not satisfied? We'll refund you, no questions asked.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related products -->
+  {%- assign related = recommendations.products | limit: 4 -%}
+  {%- if related.size > 0 -%}
+  <div class="container">
+    <div class="section-header" style="margin-top:64px">
+      <span class="eyebrow">You Might Also Like</span>
+      <h2>More From X11</h2>
+    </div>
+    <div class="product-grid">
+      {%- for rec in related -%}
+        {%- render 'product-card', product: rec -%}
+      {%- endfor -%}
+    </div>
+  </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Product Main",
+  "settings": []
+}
+{% endschema %}

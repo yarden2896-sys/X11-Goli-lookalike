@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "home",
+      "type": "cart-main",
       "settings": {}
     }
   },

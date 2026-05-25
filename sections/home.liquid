@@ -1,0 +1,149 @@
+<!-- ═══════════ HOMEPAGE HERO ═══════════ -->
+<section class="home-hero">
+  <div class="home-hero-bg" aria-hidden="true">
+    <img src="{{ 'ad-9x16-01.png' | asset_url }}" alt="" loading="eager" />
+  </div>
+  <div class="home-hero-overlay"></div>
+  <div class="container home-hero-inner">
+    <img src="{{ 'logo-white.png' | asset_url }}" alt="X11 Next-Level Nutrition" class="home-hero-logo" loading="eager" />
+    <div class="eyebrow eyebrow-light">Next-Level Nutrition</div>
+    <h1>Fuel Your Potential.<br/><em class="em-light">Every Rep. Every Day.</em></h1>
+    <p class="home-hero-sub">Premium gummy supplements crafted for serious athletes and everyday movers who refuse to settle. Clean ingredients. Clinically proven doses. Irresistible taste.</p>
+    <div class="home-hero-cta">
+      <a href="/collections/all" class="btn btn-primary btn-xl">Shop All Products</a>
+      <a href="{{ routes.root_url }}#benefits" class="btn btn-ghost">Learn More</a>
+    </div>
+    <div class="home-trust-row">
+      <span>🌱 100% Vegan</span>
+      <span>🧪 Lab Tested</span>
+      <span>🇺🇸 Made in USA</span>
+      <span>⭐ 4.9 / 5 Rating</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FEATURED PRODUCTS ═══════════ -->
+<section class="home-products" id="home-products">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Our Products</span>
+      <h2>Gummies That Actually Work</h2>
+      <p>Every product delivers the clinical dose that matters. No fillers. No shortcuts. Just results.</p>
+    </div>
+
+    <div class="product-grid">
+      {%- assign products_list = collections.all.products | limit: 6 -%}
+      {%- if products_list.size > 0 -%}
+        {%- for product in products_list -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Fallback hardcoded card if no products loaded -->
+        <div class="product-card">
+          <a href="/products/x11-vegan-creatine-monohydrate-gummies-5000mg-strength-recovery" class="product-card-img-wrap">
+            <img src="{{ 'ad-4x5-01.png' | asset_url }}" alt="X11 Creatine Monohydrate Gummies" loading="lazy" />
+            <span class="pc-badge">Best Seller</span>
+          </a>
+          <div class="product-card-body">
+            <div class="pc-stars">★★★★★ <span class="pc-count">(2,400+)</span></div>
+            <h3 class="pc-title"><a href="/products/x11-vegan-creatine-monohydrate-gummies-5000mg-strength-recovery">X11 Creatine Monohydrate Gummies</a></h3>
+            <p class="pc-desc">5,000mg pure creatine monohydrate. No mixing. Strawberry flavour. 30-day supply.</p>
+            <div class="pc-pricing">
+              <span class="pc-price">$34.99</span>
+              <span class="pc-original">$44.99</span>
+            </div>
+            <a href="/products/x11-vegan-creatine-monohydrate-gummies-5000mg-strength-recovery" class="btn btn-primary pc-cta">Shop Now</a>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="home-products-cta">
+      <a href="/collections/all" class="btn btn-outline">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BRAND VALUES ═══════════ -->
+<section class="brand-values">
+  <div class="container">
+    <div class="bv-grid">
+      <div class="bv-card">
+        <div class="bv-icon">🔬</div>
+        <h4>Science-First</h4>
+        <p>Every ingredient and every dose is backed by peer-reviewed research. No proprietary blends, no hiding behind "complexes."</p>
+      </div>
+      <div class="bv-card">
+        <div class="bv-icon">🌱</div>
+        <h4>100% Vegan</h4>
+        <p>Plant-based pectin. Zero animal gelatin. Every X11 product is certified vegan so you can fuel your body with a clear conscience.</p>
+      </div>
+      <div class="bv-card">
+        <div class="bv-icon">✅</div>
+        <h4>Clean Label</h4>
+        <p>No artificial colours, no artificial fillers, no nonsense. Read our ingredient list — you'll recognize everything on it.</p>
+      </div>
+      <div class="bv-card">
+        <div class="bv-icon">🍓</div>
+        <h4>Actually Tastes Good</h4>
+        <p>Gummies that taste amazing means you take them every single day. Consistency is the real performance hack.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SOCIAL PROOF STRIP ═══════════ -->
+<section class="home-social-proof">
+  <div class="container">
+    <div class="hsp-inner">
+      <div class="hsp-stat">
+        <strong>2,400+</strong>
+        <span>Verified Reviews</span>
+      </div>
+      <div class="hsp-divider"></div>
+      <div class="hsp-stat">
+        <strong>4.9 / 5</strong>
+        <div class="hsp-stars">★★★★★</div>
+      </div>
+      <div class="hsp-divider"></div>
+      <div class="hsp-stat">
+        <strong>30-Day</strong>
+        <span>Money-Back Guarantee</span>
+      </div>
+      <div class="hsp-divider"></div>
+      <div class="hsp-stat">
+        <strong>Made in USA</strong>
+        <span>GMP Certified Facility</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FEATURED REVIEW ═══════════ -->
+<section class="home-review-feature">
+  <div class="container">
+    <div class="hrf-inner">
+      <div class="hrf-img">
+        <img src="{{ 'ad-4x5-05.png' | asset_url }}" alt="X11 Creatine Gummies" loading="lazy" />
+      </div>
+      <div class="hrf-content">
+        <div class="hrf-stars">★★★★★</div>
+        <blockquote class="hrf-quote">
+          "I've tried every creatine product out there. X11 is the first one I've actually stuck with. The taste makes it a habit, not a chore — and my lifts are up 15% in 6 weeks. This is the one."
+        </blockquote>
+        <div class="hrf-author">
+          <strong>Marcus D.</strong>
+          <span>Verified Buyer · 3 months ago</span>
+        </div>
+        <a href="/products/x11-vegan-creatine-monohydrate-gummies-5000mg-strength-recovery" class="btn btn-primary">Try X11 Creatine Gummies</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Homepage",
+  "settings": []
+}
+{% endschema %}
