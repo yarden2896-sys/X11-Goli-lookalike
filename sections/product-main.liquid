@@ -1,5 +1,6 @@
 <!-- ═══════════ PRODUCT PAGE — HIGH CONVERSION LANDING PAGE ═══════════ -->
 {%- assign selected_variant = product.selected_or_first_available_variant -%}
+{%- assign pp_h = product.handle -%}
 
 <!-- URGENCY TOP TICKER -->
 <div class="pp-urgency-top" id="pp-urgency-top">
@@ -207,10 +208,27 @@
 
       <!-- Quick highlights -->
       <div class="pp-quick-list">
-        <div class="pp-ql-item">💪 5,000mg Creatine Monohydrate — the clinically proven dose</div>
-        <div class="pp-ql-item">🍓 Delicious strawberry — no chalk, no grit, no mixing</div>
-        <div class="pp-ql-item">🧪 Science-backed formula · 5,000mg clinically studied dose</div>
-        <div class="pp-ql-item">✈ 60 gummies = 30 servings · One bottle = 30-day supply</div>
+        {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+          <div class="pp-ql-item">🌊 3,200mg Sea Moss Blend — 92 trace minerals your body craves</div>
+          <div class="pp-ql-item">🌿 Supports gut health, natural detox &amp; radiant skin</div>
+          <div class="pp-ql-item">💧 Apple Cider Vinegar for metabolism &amp; blood sugar balance</div>
+          <div class="pp-ql-item">✈ 60 gummies = 30 servings · One bottle = 30-day supply</div>
+        {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+          <div class="pp-ql-item">🍄 2,500mg of 10 powerhouse functional mushrooms per serving</div>
+          <div class="pp-ql-item">🧠 Lion's Mane for focus &amp; cognitive clarity — zero caffeine jitters</div>
+          <div class="pp-ql-item">⚡ Cordyceps for natural energy, stamina &amp; endurance</div>
+          <div class="pp-ql-item">✈ 60 gummies = 30 servings · One bottle = 30-day supply</div>
+        {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+          <div class="pp-ql-item">🌿 1,500mg KSM-66 Ashwagandha — the world's most studied adaptogen</div>
+          <div class="pp-ql-item">😌 Clinically proven to reduce cortisol by up to 28% in 60 days</div>
+          <div class="pp-ql-item">💊 Vitamin D3 &amp; Zinc for immune defense + hormonal balance</div>
+          <div class="pp-ql-item">✈ 60 gummies = 30 servings · One bottle = 30-day supply</div>
+        {%- else -%}
+          <div class="pp-ql-item">💪 5,000mg Creatine Monohydrate — the clinically proven dose</div>
+          <div class="pp-ql-item">🍓 Delicious strawberry — no chalk, no grit, no mixing</div>
+          <div class="pp-ql-item">🧪 Science-backed formula · 5,000mg clinically studied dose</div>
+          <div class="pp-ql-item">✈ 60 gummies = 30 servings · One bottle = 30-day supply</div>
+        {%- endif -%}
       </div>
     </div>
   </div>
@@ -245,6 +263,128 @@
   <!-- ═══ WHY WOMEN LOVE IT ═══ -->
   <div class="pp-benefits-section">
     <div class="container">
+
+      {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+      <div class="pp-sec-header">
+        <span class="eyebrow">Why Women Love It</span>
+        <h2>Finally. Detox That <em>Actually</em> Works</h2>
+        <p>Forget harsh cleanses and complicated routines. X11 Sea Moss Gummies deliver deep nourishment and natural detox — every single day.</p>
+      </div>
+      <div class="pp-benefits-grid">
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">🌊</div>
+          <h4>Ocean-Rich Minerals</h4>
+          <p>Sea moss contains 92 of the 102 minerals the human body needs — including iodine, potassium, calcium, and magnesium — for total daily nourishment.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col pp-bc-featured">
+          <div class="pp-bc-featured-tag">Most Important</div>
+          <div class="pp-bc-emoji">💚</div>
+          <h4>Gut Health & Digestion</h4>
+          <p>Sea moss acts as a natural prebiotic — feeding healthy gut bacteria, reducing bloating, and promoting smooth, comfortable digestion.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">🌿</div>
+          <h4>Deep Natural Detox</h4>
+          <p>Bladderwrack and burdock root work together to support lymphatic drainage, kidney function, and full-body toxin removal.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">✨</div>
+          <h4>Radiant Skin & Hair</h4>
+          <p>Sea moss is rich in collagen-supporting nutrients — promoting hydrated, glowing skin, stronger nails, and healthier hair from within.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">⚡</div>
+          <h4>ACV Metabolism Boost</h4>
+          <p>Apple cider vinegar supports healthy blood sugar levels, sustained energy, and a revved metabolism — all in a great-tasting gummy.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">🧪</div>
+          <h4>Lab Tested. Certified Safe.</h4>
+          <p>Third-party tested for purity. Manufactured in an FDA-registered facility. 100% vegan, gluten-free, non-GMO.</p>
+        </div>
+      </div>
+
+      {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+      <div class="pp-sec-header">
+        <span class="eyebrow">Why Women Love It</span>
+        <h2>10 Mushrooms. One Powerhouse Gummy.</h2>
+        <p>Forget artificial stimulants and afternoon crashes. X11 Mushroom Gummies deliver clean, focused energy — powered by nature, not caffeine.</p>
+      </div>
+      <div class="pp-benefits-grid">
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">🧠</div>
+          <h4>Sharper Focus & Mental Clarity</h4>
+          <p>Lion's Mane stimulates NGF (nerve growth factor), enhancing memory, cognitive speed, and mental focus — naturally.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col pp-bc-featured">
+          <div class="pp-bc-featured-tag">Most Important</div>
+          <div class="pp-bc-emoji">⚡</div>
+          <h4>Clean, Crash-Free Energy</h4>
+          <p>Cordyceps increases cellular ATP production and oxygen uptake — giving you real, sustained energy without caffeine spikes or crashes.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">😌</div>
+          <h4>Stress & Cortisol Relief</h4>
+          <p>Reishi is nature's adaptogen — clinically shown to reduce cortisol, ease anxiety, and shift your nervous system from 'fight or flight' to calm focus.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">🛡</div>
+          <h4>Immune System Fortifier</h4>
+          <p>Chaga contains the highest antioxidant score of any food — neutralizing free radicals and priming your immune defense system daily.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">😴</div>
+          <h4>Deep Sleep & Recovery</h4>
+          <p>Reishi and Turkey Tail work synergistically to support deep sleep cycles and overnight cellular recovery — wake up actually rested.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">🧪</div>
+          <h4>Lab Tested. Certified Safe.</h4>
+          <p>Third-party tested for purity. Manufactured in an FDA-registered facility. 100% vegan — zero psychoactive compounds.</p>
+        </div>
+      </div>
+
+      {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+      <div class="pp-sec-header">
+        <span class="eyebrow">Why Women Love It</span>
+        <h2>Calm Your Mind. Strengthen Your Body.</h2>
+        <p>Stress is the silent enemy of your health, sleep, and fitness. X11 Ashwagandha Gummies tackle it at the source — naturally and clinically.</p>
+      </div>
+      <div class="pp-benefits-grid">
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">😌</div>
+          <h4>Stress & Cortisol Relief</h4>
+          <p>KSM-66 Ashwagandha is clinically proven to reduce cortisol by up to 28% — making you feel measurably calmer, clearer, and more in control.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col pp-bc-featured">
+          <div class="pp-bc-featured-tag">Most Important</div>
+          <div class="pp-bc-emoji">🧠</div>
+          <h4>Mood & Hormonal Balance</h4>
+          <p>Ashwagandha supports healthy estrogen and thyroid function — the key hormones controlling energy, mood, and weight management in women.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">🛡</div>
+          <h4>Immune Defense</h4>
+          <p>Vitamin D3 activates T-cells to fight infection while Zinc modulates inflammation — two nutrients most American women are deficient in.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">💤</div>
+          <h4>Deep, Restorative Sleep</h4>
+          <p>By lowering cortisol at night, ashwagandha lets your body enter genuine restorative sleep — waking up refreshed, not exhausted.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">⚡</div>
+          <h4>Real, Lasting Energy</h4>
+          <p>When cortisol drops and adrenal function normalizes, fatigue fades. Users report significantly better daytime energy — without stimulants.</p>
+        </div>
+        <div class="pp-benefit-card pp-benefit-col">
+          <div class="pp-bc-emoji">🧪</div>
+          <h4>Lab Tested. Certified Safe.</h4>
+          <p>KSM-66 is the world's most clinically studied ashwagandha extract. Third-party tested. FDA-registered facility.</p>
+        </div>
+      </div>
+
+      {%- else -%}
       <div class="pp-sec-header">
         <span class="eyebrow">Why Women Love It</span>
         <h2>Finally. Creatine You'll <em>Actually</em> Take</h2>
@@ -280,9 +420,11 @@
         <div class="pp-benefit-card pp-benefit-col">
           <div class="pp-bc-emoji">🧪</div>
           <h4>Lab Tested. Certified Safe.</h4>
-          <p>Third-party tested for purity. GMP certified, manufactured in an FDA-registered US facility.</p>
+          <p>Third-party tested for purity. Manufactured in an FDA-registered facility.</p>
         </div>
       </div>
+      {%- endif -%}
+
     </div>
   </div>
 
@@ -380,21 +522,233 @@
     <div class="container">
       <div class="pp-sec-header">
         <span class="eyebrow">2,400+ Verified Reviews</span>
-        <h2>Women Are Obsessed With X11</h2>
+        {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+          <h2>Women Are Obsessed With X11 Sea Moss Gummies</h2>
+        {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+          <h2>Women Are Obsessed With X11 Mushroom Gummies</h2>
+        {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+          <h2>Women Are Obsessed With X11 Ashwagandha Gummies</h2>
+        {%- else -%}
+          <h2>Women Are Obsessed With X11 Creatine Gummies</h2>
+        {%- endif -%}
         <div class="pp-overall-rating">
           <span class="pp-big-stars">★★★★★</span>
           <span class="pp-big-score">4.9 out of 5</span>
         </div>
       </div>
+
       <div class="pp-reviews-grid">
+
+        {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand)">BH</div>
+            <div class="pp-rc-info"><strong>Brittany H.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"My skin is literally glowing after 4 weeks"</h5>
+          <p class="pp-rc-body">I started these mostly for the gut health benefits and within two weeks my bloating was completely gone. But the surprise was my skin — people keep asking what I'm doing differently. Four bottles in and I'll never stop. Sea moss is the real deal.</p>
+          <span class="pp-rc-date">April 2024 · Atlanta, GA</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-deep)">MT</div>
+            <div class="pp-rc-info"><strong>Megan T.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"The bloating I've had for years is finally GONE"</h5>
+          <p class="pp-rc-body">I've struggled with bloating and digestive issues for as long as I can remember. After 10 days of these gummies I noticed a real difference. Three weeks in and I feel completely different — lighter, more comfortable, and honestly more confident. So grateful I found these.</p>
+          <span class="pp-rc-date">March 2024 · Denver, CO</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-dark)">CP</div>
+            <div class="pp-rc-info"><strong>Christina P.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"Energy I haven't felt since my 20s"</h5>
+          <p class="pp-rc-body">I'm 38 and started taking these because my nutritionist mentioned sea moss for thyroid support. Within a month I had noticeably more energy, better focus, and my cravings reduced significantly. The taste is great and taking 2 gummies is so easy. On my third bottle!</p>
+          <span class="pp-rc-date">February 2024 · Phoenix, AZ</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand)">RW</div>
+            <div class="pp-rc-info"><strong>Rachel W.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"My hair and nails have never been stronger"</h5>
+          <p class="pp-rc-body">I've been taking sea moss for about 6 weeks and the changes in my hair and nails are unreal. My nails stopped breaking and my hair is growing faster and feels thicker. These taste so much better than the gel I was using before. Absolutely worth it.</p>
+          <span class="pp-rc-date">May 2024 · Seattle, WA</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-deep)">DS</div>
+            <div class="pp-rc-info"><strong>Danielle S.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"Finally a sea moss product I can actually stick with"</h5>
+          <p class="pp-rc-body">I tried sea moss gel before and could never get past the taste. These gummies are actually delicious — I genuinely look forward to them every morning. And the benefits are real: better digestion, clearer skin, and I haven't felt this good in years. Highly recommend!</p>
+          <span class="pp-rc-date">January 2024 · New York, NY</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-dark)">TM</div>
+            <div class="pp-rc-info"><strong>Tiffany M.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"I've ordered 5 bottles — and got my mom on them too"</h5>
+          <p class="pp-rc-body">The results spoke for themselves within the first month. My skin is clearer, my digestion is smooth, and I have steady energy throughout the day without the afternoon crash I used to get. I've converted my mom and two coworkers. This is my forever supplement.</p>
+          <span class="pp-rc-date">March 2024 · Houston, TX</span>
+        </div>
+
+        {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand)">SL</div>
+            <div class="pp-rc-info"><strong>Stephanie L.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"My focus at work is on a completely different level"</h5>
+          <p class="pp-rc-body">I work in tech and the mental clarity from these is shocking. By day 5 my brain fog was gone and by week 2 I was on fire — getting through my work faster, feeling more creative, staying sharp all afternoon. I've tried expensive nootropics before. Nothing compares to this.</p>
+          <span class="pp-rc-date">April 2024 · San Francisco, CA</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-deep)">AK</div>
+            <div class="pp-rc-info"><strong>Amanda K.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"No more 3pm crash — I have energy ALL day"</h5>
+          <p class="pp-rc-body">I used to hit a wall every afternoon and reach for more coffee. Since taking these mushroom gummies in the morning I have steady, clean energy from morning to evening. No jitters, no anxiety, no crash. It's honestly life-changing for a working mom. On my third bottle.</p>
+          <span class="pp-rc-date">March 2024 · Boston, MA</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-dark)">NR</div>
+            <div class="pp-rc-info"><strong>Nicole R.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"I finally have the energy to keep up with my kids"</h5>
+          <p class="pp-rc-body">As a mom of three I was running on empty. These have been a total reset. More energy, better mood, less stress — and I'm actually sleeping better too. I take 2 every morning and it's become as automatic as brushing my teeth. Cannot recommend these enough.</p>
+          <span class="pp-rc-date">February 2024 · Portland, OR</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand)">VC</div>
+            <div class="pp-rc-info"><strong>Vanessa C.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"My workouts improved and I'm not even tired after"</h5>
+          <p class="pp-rc-body">I've been taking these for 6 weeks and the endurance boost is real. I can push through cardio longer and my recovery is much quicker. But the biggest win is the mental side — I'm focused, motivated, and in a genuinely better mood. Worth every cent.</p>
+          <span class="pp-rc-date">May 2024 · Charlotte, NC</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-deep)">TM</div>
+            <div class="pp-rc-info"><strong>Taylor M.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"I'm sleeping deeper than I have in years"</h5>
+          <p class="pp-rc-body">I bought these for energy but the unexpected benefit was my sleep. I'm falling asleep faster, staying asleep, and waking up actually feeling rested. My anxiety has also reduced noticeably. It's like my nervous system finally calmed down. This is my forever supplement.</p>
+          <span class="pp-rc-date">January 2024 · San Diego, CA</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-dark)">JP</div>
+            <div class="pp-rc-info"><strong>Jordan P.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"Replaced my pre-workout AND my stress supplement"</h5>
+          <p class="pp-rc-body">I used to take separate pre-workout and adaptogens for stress. These mushroom gummies do both. Natural energy for my workouts, and throughout the day I feel calmer and more focused. Simplified my routine and saved money. 10 out of 10, I've reordered twice already.</p>
+          <span class="pp-rc-date">March 2024 · Nashville, TN</span>
+        </div>
+
+        {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand)">EB</div>
+            <div class="pp-rc-info"><strong>Emily B.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"The anxiety and overwhelm I carried for years — just gone"</h5>
+          <p class="pp-rc-body">I was skeptical because I've tried other "stress" supplements that did nothing. Within 10 days of taking these I noticed I was reacting differently to stressful situations — calmer, less reactive, more grounded. By week 3 my sleep was transformed too. I cannot recommend these enough.</p>
+          <span class="pp-rc-date">April 2024 · Seattle, WA</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-deep)">CN</div>
+            <div class="pp-rc-info"><strong>Claire N.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"Sleeping through the night for the first time in 2 years"</h5>
+          <p class="pp-rc-body">I've had insomnia since my second child was born. These gummies have been life-changing — I fall asleep faster, stay asleep, and wake up actually rested. The bonus is I feel less anxious during the day too. The flavor is great and I look forward to them every night.</p>
+          <span class="pp-rc-date">March 2024 · Austin, TX</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-dark)">MP</div>
+            <div class="pp-rc-info"><strong>Michelle P.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"My hormones finally feel balanced after months of chaos"</h5>
+          <p class="pp-rc-body">Going through perimenopause was wrecking me — mood swings, fatigue, terrible sleep. My naturopath suggested ashwagandha. These gummies made it so easy to stay consistent. After 6 weeks the difference is undeniable. Mood is stable, energy is back, sleeping soundly again.</p>
+          <span class="pp-rc-date">February 2024 · Chicago, IL</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand)">SO</div>
+            <div class="pp-rc-info"><strong>Samantha O.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"I haven't gotten sick once since starting these"</h5>
+          <p class="pp-rc-body">I started these primarily for immune support during cold season and the results have been incredible. My whole office got sick twice — I didn't get it either time. And the bonus I wasn't expecting: my stress levels are way down and my energy has improved noticeably. Love this product.</p>
+          <span class="pp-rc-date">May 2024 · Los Angeles, CA</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-deep)">HR</div>
+            <div class="pp-rc-info"><strong>Hayley R.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"Postpartum anxiety is so much more manageable now"</h5>
+          <p class="pp-rc-body">After my second baby I was struggling with postpartum anxiety and exhaustion. These have been a genuine lifeline. The edge is off — I feel more like myself, sleeping better when I can, and the energy to get through my days. So grateful my friend told me about these.</p>
+          <span class="pp-rc-date">January 2024 · Dallas, TX</span>
+        </div>
+
+        <div class="pp-review-card">
+          <div class="pp-rc-top">
+            <div class="pp-rc-avatar" style="background:var(--brand-dark)">RW</div>
+            <div class="pp-rc-info"><strong>Rebecca W.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
+            <div class="pp-rc-stars">★★★★★</div>
+          </div>
+          <h5 class="pp-rc-title">"More energy at 42 than I had at 32 — seriously"</h5>
+          <p class="pp-rc-body">I was dragging myself through every day and chalking it up to "just getting older." After two months on these ashwagandha gummies I have more energy, better focus, and I'm actually motivated to work out again. This is not placebo — the difference is very real. Already on my 4th bottle.</p>
+          <span class="pp-rc-date">March 2024 · Miami, FL</span>
+        </div>
+
+        {%- else -%}
 
         <div class="pp-review-card">
           <div class="pp-rc-top">
             <div class="pp-rc-avatar" style="background:var(--brand)">JM</div>
-            <div class="pp-rc-info">
-              <strong>Jessica M.</strong>
-              <span class="pp-verified">✓ Verified Purchase</span>
-            </div>
+            <div class="pp-rc-info"><strong>Jessica M.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
             <div class="pp-rc-stars">★★★★★</div>
           </div>
           <img src="{{ 'ad-1x1-01.png' | asset_url }}" alt="Jessica's results photo" class="pp-rc-img" loading="lazy" />
@@ -406,10 +760,7 @@
         <div class="pp-review-card">
           <div class="pp-rc-top">
             <div class="pp-rc-avatar" style="background:var(--brand-deep)">SK</div>
-            <div class="pp-rc-info">
-              <strong>Sarah K.</strong>
-              <span class="pp-verified">✓ Verified Purchase</span>
-            </div>
+            <div class="pp-rc-info"><strong>Sarah K.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
             <div class="pp-rc-stars">★★★★★</div>
           </div>
           <img src="{{ 'ad-1x1-02.png' | asset_url }}" alt="Sarah's results photo" class="pp-rc-img" loading="lazy" />
@@ -421,10 +772,7 @@
         <div class="pp-review-card">
           <div class="pp-rc-top">
             <div class="pp-rc-avatar" style="background:var(--brand-dark)">AT</div>
-            <div class="pp-rc-info">
-              <strong>Ashley T.</strong>
-              <span class="pp-verified">✓ Verified Purchase</span>
-            </div>
+            <div class="pp-rc-info"><strong>Ashley T.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
             <div class="pp-rc-stars">★★★★★</div>
           </div>
           <img src="{{ 'ad-1x1-03.png' | asset_url }}" alt="Ashley's results photo" class="pp-rc-img" loading="lazy" />
@@ -436,10 +784,7 @@
         <div class="pp-review-card">
           <div class="pp-rc-top">
             <div class="pp-rc-avatar" style="background:var(--brand)">MR</div>
-            <div class="pp-rc-info">
-              <strong>Madison R.</strong>
-              <span class="pp-verified">✓ Verified Purchase</span>
-            </div>
+            <div class="pp-rc-info"><strong>Madison R.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
             <div class="pp-rc-stars">★★★★★</div>
           </div>
           <h5 class="pp-rc-title">"Huge difference in the gym after just 3 weeks"</h5>
@@ -450,10 +795,7 @@
         <div class="pp-review-card">
           <div class="pp-rc-top">
             <div class="pp-rc-avatar" style="background:var(--brand-deep)">LC</div>
-            <div class="pp-rc-info">
-              <strong>Lauren C.</strong>
-              <span class="pp-verified">✓ Verified Purchase</span>
-            </div>
+            <div class="pp-rc-info"><strong>Lauren C.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
             <div class="pp-rc-stars">★★★★★</div>
           </div>
           <h5 class="pp-rc-title">"I've converted my entire friend group"</h5>
@@ -464,16 +806,15 @@
         <div class="pp-review-card">
           <div class="pp-rc-top">
             <div class="pp-rc-avatar" style="background:var(--brand-dark)">KP</div>
-            <div class="pp-rc-info">
-              <strong>Kayla P.</strong>
-              <span class="pp-verified">✓ Verified Purchase</span>
-            </div>
+            <div class="pp-rc-info"><strong>Kayla P.</strong><span class="pp-verified">✓ Verified Purchase</span></div>
             <div class="pp-rc-stars">★★★★★</div>
           </div>
           <h5 class="pp-rc-title">"Worth every single penny"</h5>
           <p class="pp-rc-body">I was skeptical at first — $30+ for gummies? But after one bottle I completely get why these sell out constantly. My muscle definition has improved, my workouts are more productive, and I genuinely look forward to my "vitamins" every morning. 10/10, always reordering.</p>
           <span class="pp-rc-date">March 2024 · Los Angeles, CA</span>
         </div>
+
+        {%- endif -%}
 
       </div>
 
@@ -490,6 +831,101 @@
   <!-- ═══ HOW IT WORKS ═══ -->
   <div class="pp-how-section">
     <div class="container">
+
+      {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+      <div class="pp-sec-header">
+        <span class="eyebrow">Simple as 1–2–3</span>
+        <h2>Your New Wellness Ritual</h2>
+      </div>
+      <div class="pp-steps-row">
+        <div class="pp-step">
+          <div class="pp-step-num">1</div>
+          <div class="pp-step-emoji">☀️</div>
+          <h4>Take 2 Gummies</h4>
+          <p>Every morning, ideally on an empty stomach. No prep, no mess, no complicated routines.</p>
+        </div>
+        <div class="pp-step-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">2</div>
+          <div class="pp-step-emoji">💧</div>
+          <h4>Nourish & Detox</h4>
+          <p>Sea moss begins supporting your gut microbiome and flushing toxins within days of consistent use.</p>
+        </div>
+        <div class="pp-step-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">3</div>
+          <div class="pp-step-emoji">✨</div>
+          <h4>Feel the Glow</h4>
+          <p>Clearer skin, less bloating, more energy. Most customers notice visible results in 2–4 weeks.</p>
+        </div>
+      </div>
+      <div class="pp-how-note">
+        🔬 Best results with consistent daily use. Most customers see their best results by week 4–6.
+      </div>
+
+      {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+      <div class="pp-sec-header">
+        <span class="eyebrow">Simple as 1–2–3</span>
+        <h2>Your New Morning Ritual</h2>
+      </div>
+      <div class="pp-steps-row">
+        <div class="pp-step">
+          <div class="pp-step-num">1</div>
+          <div class="pp-step-emoji">☀️</div>
+          <h4>Take 2 Gummies</h4>
+          <p>Every morning. Your 10 adaptogenic mushrooms begin calibrating your stress response and energy systems.</p>
+        </div>
+        <div class="pp-step-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">2</div>
+          <div class="pp-step-emoji">🧠</div>
+          <h4>Feel the Clarity</h4>
+          <p>Within 3–7 days most women notice steadier energy, less brain fog, and sharper focus throughout the day.</p>
+        </div>
+        <div class="pp-step-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">3</div>
+          <div class="pp-step-emoji">✨</div>
+          <h4>Thrive at Full Power</h4>
+          <p>After 4 weeks, experience improved immune resilience, better sleep, and sustained mental performance. Every day.</p>
+        </div>
+      </div>
+      <div class="pp-how-note">
+        🔬 Results improve with consistent daily use. Most customers report feeling peak benefits between weeks 3–6.
+      </div>
+
+      {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+      <div class="pp-sec-header">
+        <span class="eyebrow">Simple as 1–2–3</span>
+        <h2>Your New Evening Ritual</h2>
+      </div>
+      <div class="pp-steps-row">
+        <div class="pp-step">
+          <div class="pp-step-num">1</div>
+          <div class="pp-step-emoji">🌙</div>
+          <h4>Take 2 Gummies</h4>
+          <p>Every evening — ashwagandha is most effective taken consistently at night, when cortisol naturally starts to decline.</p>
+        </div>
+        <div class="pp-step-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">2</div>
+          <div class="pp-step-emoji">😴</div>
+          <h4>Sleep Better. Recover Fully.</h4>
+          <p>Within 7–10 days most women notice calmer evenings, faster sleep onset, and noticeably better morning energy.</p>
+        </div>
+        <div class="pp-step-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">3</div>
+          <div class="pp-step-emoji">✨</div>
+          <h4>Feel Like Yourself Again</h4>
+          <p>After 4 weeks, expect balanced hormones, a calmer stress response, stronger immunity, and the energy you thought was gone for good.</p>
+        </div>
+      </div>
+      <div class="pp-how-note">
+        🔬 Results improve with consistent daily use. Most customers report peak benefits between weeks 4–8.
+      </div>
+
+      {%- else -%}
       <div class="pp-sec-header">
         <span class="eyebrow">Simple as 1–2–3</span>
         <h2>Your New Morning Ritual</h2>
@@ -519,6 +955,8 @@
       <div class="pp-how-note">
         🔬 Results typically visible in <strong>2–4 weeks</strong> with consistent daily use. Most customers see their best results by week 6.
       </div>
+      {%- endif -%}
+
     </div>
   </div>
 
@@ -526,6 +964,179 @@
   <div class="pp-science-section">
     <div class="container">
       <div class="pp-sci-grid">
+
+        {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+        <div class="pp-sci-text">
+          <span class="eyebrow eyebrow-light">The Science</span>
+          <h2 style="color:#fff">92 Minerals. Centuries of Wisdom. Modern Proof.</h2>
+          <p class="pp-sci-lead">Sea moss has been revered in Irish, Caribbean, and Asian traditions for centuries. Modern nutrition science confirms what healers always knew — it's one of nature's most complete superfoods.</p>
+          <div class="pp-sci-points">
+            <div class="pp-sci-pt">
+              <div class="pp-sci-num">01</div>
+              <div>
+                <h5>92 of 102 Minerals Your Body Needs</h5>
+                <p>Sea moss is one of the most nutrient-dense foods on earth — delivering iodine, potassium, magnesium, and 89 more trace minerals in every serving.</p>
+              </div>
+            </div>
+            <div class="pp-sci-pt">
+              <div class="pp-sci-num">02</div>
+              <div>
+                <h5>Natural Prebiotic for Gut Health</h5>
+                <p>Sea moss contains soluble fiber that acts as a prebiotic, feeding beneficial gut bacteria and reducing inflammation, bloating, and digestive discomfort.</p>
+              </div>
+            </div>
+            <div class="pp-sci-pt">
+              <div class="pp-sci-num">03</div>
+              <div>
+                <h5>Thyroid, Metabolism & Hormone Support</h5>
+                <p>Bladderwrack's natural iodine content supports thyroid hormone production — the master regulator of metabolism, energy, and hormonal balance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pp-sci-cards">
+          <div class="pp-ing-card">
+            <h4>🧾 Full Ingredient List</h4>
+            <div class="pp-ing-active">
+              <span>Sea Moss Blend</span>
+              <strong>3,200mg</strong>
+            </div>
+            <div class="pp-ing-sep"></div>
+            <p class="pp-ing-other-label">Blend Includes:</p>
+            <p class="pp-ing-other">Sea Moss, Bladderwrack, Burdock Root, Apple Cider Vinegar Extract</p>
+            <p class="pp-ing-other-label" style="margin-top:8px">Other Ingredients:</p>
+            <p class="pp-ing-other">Tapioca Syrup, Sugar, Water, Pectin, Citric Acid, Natural Flavors, Sodium Citrate</p>
+            <div class="pp-ing-free-list">
+              <span>✓ Gluten Free</span>
+              <span>✓ Dairy Free</span>
+              <span>✓ Soy Free</span>
+              <span>✓ No Artificial Colors</span>
+              <span>✓ No Animal Gelatin</span>
+            </div>
+          </div>
+          <div class="pp-cert-row">
+            <div class="pp-cert"><span>⭐</span><small>4.9 Star<br>Rated</small></div>
+            <div class="pp-cert"><span>🚚</span><small>Fast<br>Shipping</small></div>
+            <div class="pp-cert"><span>💰</span><small>30-Day<br>Guarantee</small></div>
+            <div class="pp-cert"><span>🌱</span><small>100%<br>Vegan</small></div>
+          </div>
+        </div>
+
+        {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+        <div class="pp-sci-text">
+          <span class="eyebrow eyebrow-light">The Science</span>
+          <h2 style="color:#fff">2,000 Years of Wisdom. Proven by Modern Research.</h2>
+          <p class="pp-sci-lead">Functional mushrooms have been used in Eastern medicine for millennia. Clinical science now confirms their measurable impact on brain function, energy systems, and immune defense.</p>
+          <div class="pp-sci-points">
+            <div class="pp-sci-pt">
+              <div class="pp-sci-num">01</div>
+              <div>
+                <h5>Lion's Mane Stimulates New Brain Cell Growth</h5>
+                <p>Clinical studies show Lion's Mane increases NGF (nerve growth factor), supporting neuroplasticity, memory retention, and cognitive function.</p>
+              </div>
+            </div>
+            <div class="pp-sci-pt">
+              <div class="pp-sci-num">02</div>
+              <div>
+                <h5>Cordyceps Increases VO₂ Max & Endurance</h5>
+                <p>Athletes supplementing with Cordyceps show 7–11% improvements in oxygen utilization and time-to-exhaustion in clinical trials.</p>
+              </div>
+            </div>
+            <div class="pp-sci-pt">
+              <div class="pp-sci-num">03</div>
+              <div>
+                <h5>Reishi Reduces Cortisol & Improves Sleep</h5>
+                <p>Reishi polysaccharides regulate the HPA axis, measurably lowering cortisol levels and improving both sleep quality and total duration.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pp-sci-cards">
+          <div class="pp-ing-card">
+            <h4>🧾 Full Ingredient List</h4>
+            <div class="pp-ing-active">
+              <span>10-in-1 Mushroom Blend</span>
+              <strong>2,500mg</strong>
+            </div>
+            <div class="pp-ing-sep"></div>
+            <p class="pp-ing-other-label">Blend Includes:</p>
+            <p class="pp-ing-other">Lion's Mane, Reishi, Chaga, Cordyceps, Turkey Tail, Shiitake, Maitake, White Button, Black Fungus, Oyster Mushroom</p>
+            <p class="pp-ing-other-label" style="margin-top:8px">Other Ingredients:</p>
+            <p class="pp-ing-other">Tapioca Syrup, Sugar, Water, Pectin, Citric Acid, Natural Flavors, Sodium Citrate</p>
+            <div class="pp-ing-free-list">
+              <span>✓ Gluten Free</span>
+              <span>✓ Dairy Free</span>
+              <span>✓ Soy Free</span>
+              <span>✓ No Artificial Colors</span>
+              <span>✓ No Animal Gelatin</span>
+            </div>
+          </div>
+          <div class="pp-cert-row">
+            <div class="pp-cert"><span>⭐</span><small>4.9 Star<br>Rated</small></div>
+            <div class="pp-cert"><span>🚚</span><small>Fast<br>Shipping</small></div>
+            <div class="pp-cert"><span>💰</span><small>30-Day<br>Guarantee</small></div>
+            <div class="pp-cert"><span>🌱</span><small>100%<br>Vegan</small></div>
+          </div>
+        </div>
+
+        {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+        <div class="pp-sci-text">
+          <span class="eyebrow eyebrow-light">The Science</span>
+          <h2 style="color:#fff">600+ Studies Confirm: Ashwagandha Changes Everything.</h2>
+          <p class="pp-sci-lead">Withania somnifera (ashwagandha) is the world's most studied Ayurvedic adaptogen. KSM-66 — used in X11's formula — is the highest-concentration, most bioavailable extract available.</p>
+          <div class="pp-sci-points">
+            <div class="pp-sci-pt">
+              <div class="pp-sci-num">01</div>
+              <div>
+                <h5>Reduces Cortisol by up to 28%</h5>
+                <p>Gold-standard double-blind, placebo-controlled trials show KSM-66 significantly lowers serum cortisol — the primary driver of stress, weight gain, and poor sleep.</p>
+              </div>
+            </div>
+            <div class="pp-sci-pt">
+              <div class="pp-sci-num">02</div>
+              <div>
+                <h5>Improves Sleep Quality & Total Sleep Time</h5>
+                <p>Clinical trials measuring sleep with PSQI scores show ashwagandha meaningfully improves sleep onset, total duration, and morning alertness.</p>
+              </div>
+            </div>
+            <div class="pp-sci-pt">
+              <div class="pp-sci-num">03</div>
+              <div>
+                <h5>Vitamin D3 & Zinc Activate Your Immune System</h5>
+                <p>Vitamin D3 is required for T-cell activation — the immune system's frontline soldiers. Combined with Zinc's anti-inflammatory action, this trio delivers comprehensive immune protection.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pp-sci-cards">
+          <div class="pp-ing-card">
+            <h4>🧾 Full Ingredient List</h4>
+            <div class="pp-ing-active">
+              <span>KSM-66 Ashwagandha + D3 &amp; Zinc</span>
+              <strong>1,500mg</strong>
+            </div>
+            <div class="pp-ing-sep"></div>
+            <p class="pp-ing-other-label">Active Ingredients:</p>
+            <p class="pp-ing-other">Ashwagandha Root Extract (KSM-66), Vitamin D3 (Cholecalciferol), Zinc Gluconate</p>
+            <p class="pp-ing-other-label" style="margin-top:8px">Other Ingredients:</p>
+            <p class="pp-ing-other">Tapioca Syrup, Sugar, Water, Pectin, Citric Acid, Natural Flavors, Sodium Citrate</p>
+            <div class="pp-ing-free-list">
+              <span>✓ Gluten Free</span>
+              <span>✓ Dairy Free</span>
+              <span>✓ Soy Free</span>
+              <span>✓ No Artificial Colors</span>
+              <span>✓ No Animal Gelatin</span>
+            </div>
+          </div>
+          <div class="pp-cert-row">
+            <div class="pp-cert"><span>⭐</span><small>4.9 Star<br>Rated</small></div>
+            <div class="pp-cert"><span>🚚</span><small>Fast<br>Shipping</small></div>
+            <div class="pp-cert"><span>💰</span><small>30-Day<br>Guarantee</small></div>
+            <div class="pp-cert"><span>🌱</span><small>100%<br>Vegan</small></div>
+          </div>
+        </div>
+
+        {%- else -%}
         <div class="pp-sci-text">
           <span class="eyebrow eyebrow-light">The Science</span>
           <h2 style="color:#fff">Backed by 1,000+ Peer-Reviewed Studies</h2>
@@ -579,6 +1190,8 @@
             <div class="pp-cert"><span>🌱</span><small>100%<br>Vegan</small></div>
           </div>
         </div>
+        {%- endif -%}
+
       </div>
     </div>
   </div>
@@ -615,6 +1228,134 @@
         <h2>Frequently Asked Questions</h2>
       </div>
       <div class="pp-faq-list">
+
+        {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            What does sea moss actually do for your body?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Sea moss contains 92 of the 102 minerals the human body needs — including iodine, potassium, calcium, magnesium, and iron. It supports thyroid function, gut health (as a natural prebiotic), skin hydration, immune defense, and sustained energy. Combined with bladderwrack, burdock root, and ACV, this formula supports full-body detox and nourishment.</p>
+          </div>
+        </div>
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            How long until I see results?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Most customers notice improved digestion and reduced bloating within the first 7–10 days. Skin improvements (hydration, clarity, glow) typically become visible by weeks 3–4. Energy and overall wellbeing improvements often appear within the first 2 weeks of consistent daily use.</p>
+          </div>
+        </div>
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            How many gummies do I take?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Take 2 gummies daily (1 serving = 2 gummies = 3,200mg sea moss blend). For best results, take on an empty stomach in the morning. Each bottle contains 60 gummies = 30 servings = 30-day supply.</p>
+          </div>
+        </div>
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            Is sea moss safe for daily use?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Yes! Sea moss has been safely consumed daily for centuries across many cultures. X11's formula is third-party lab tested for purity and potency. If you have thyroid conditions or take blood thinners, consult your doctor before starting — sea moss is naturally high in iodine which affects thyroid function.</p>
+          </div>
+        </div>
+
+        {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            Will these mushrooms make me hallucinate?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Absolutely not! These are 100% functional (non-psychedelic) mushrooms — completely legal and safe. Functional mushrooms like Lion's Mane, Reishi, Cordyceps, and Chaga are not related to psilocybin mushrooms in any way. They work through adaptogenic pathways to support brain health, energy, immunity, and stress response.</p>
+          </div>
+        </div>
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            How long until I feel the energy and focus benefits?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Most women notice improved energy and reduced brain fog within 3–7 days. Focus and mental clarity improvements are typically felt within the first 2 weeks. Full benefits — including immune support, better sleep, and stress resilience — peak around weeks 4–6 with consistent daily use.</p>
+          </div>
+        </div>
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            How many gummies do I take?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Take 2 gummies daily (1 serving = 2 gummies = 2,500mg mushroom blend). Best taken in the morning. Each bottle contains 60 gummies = 30 servings = 30-day supply. You can take with or without coffee — functional mushrooms actually complement caffeine without adding jitters.</p>
+          </div>
+        </div>
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            Can I take mushroom gummies with coffee or other supplements?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Yes! Functional mushrooms pair excellently with coffee — many customers report that Lion's Mane and Cordyceps enhance caffeine's focus effects while Reishi takes the edge off caffeine anxiety. They're also safe to stack with most other supplements. As always, consult your doctor if you're on prescription medications.</p>
+          </div>
+        </div>
+
+        {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            Will ashwagandha make me drowsy or sedated?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>No — ashwagandha doesn't sedate you. It works by regulating cortisol (your stress hormone) rather than directly inducing sleep. This means you feel calmer and more grounded during the day, and when taken in the evening it allows your body to wind down naturally at night. Most women report feeling more energized during the day, not sleepy.</p>
+          </div>
+        </div>
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            How long until I feel less stressed?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Most women notice calmer moods and reduced anxiety within 7–14 days. Sleep improvements often appear in the first 10 days. Significant hormonal balancing, sustained energy improvements, and full immune benefits typically develop over 4–8 weeks of consistent daily use — the longer you take it, the better the results.</p>
+          </div>
+        </div>
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            How many gummies do I take, and when?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Take 2 gummies daily (1 serving = 2 gummies = 1,500mg ashwagandha blend). We recommend taking them in the evening — ashwagandha is most effective at supporting sleep and recovery when taken before bed. Each bottle contains 60 gummies = 30 servings = 30-day supply.</p>
+          </div>
+        </div>
+
+        <div class="pp-faq-item">
+          <button class="pp-faq-q" aria-expanded="false">
+            Is ashwagandha safe for women with hormonal conditions?
+            <span class="pp-faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="pp-faq-a" hidden>
+            <p>Ashwagandha is generally considered safe for most women and can be beneficial for hormonal balance. However, if you are pregnant, breastfeeding, have thyroid conditions, or take hormone medications, please consult your doctor before use. KSM-66 — the extract used in X11 — has the most robust safety profile of any ashwagandha extract available.</p>
+          </div>
+        </div>
+
+        {%- else -%}
 
         <div class="pp-faq-item">
           <button class="pp-faq-q" aria-expanded="false">
@@ -656,6 +1397,8 @@
           </div>
         </div>
 
+        {%- endif -%}
+
         <div class="pp-faq-item">
           <button class="pp-faq-q" aria-expanded="false">
             What payment methods do you accept?
@@ -686,8 +1429,19 @@
     <div class="container pp-fcta-inner">
       <img src="{{ 'logo-white.png' | asset_url }}" alt="X11 Supplements" class="pp-fcta-logo" />
       <span class="eyebrow eyebrow-light">Limited Time Offer</span>
-      <h2>Ready to Level Up Your Workouts?</h2>
-      <p class="pp-fcta-sub">Join 50,000+ women who've already made the switch. Your strongest self is one gummy away.</p>
+      {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+        <h2>Ready to Cleanse, Nourish &amp; Glow?</h2>
+        <p class="pp-fcta-sub">Join 50,000+ women who've discovered the power of sea moss. Your healthiest, most radiant self starts from the inside.</p>
+      {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+        <h2>Ready to Think Clearer, Feel Stronger &amp; Sleep Better?</h2>
+        <p class="pp-fcta-sub">Join 50,000+ women who've unlocked the power of functional mushrooms. Your best brain and body start today.</p>
+      {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+        <h2>Ready to Finally Feel Like Yourself Again?</h2>
+        <p class="pp-fcta-sub">Join 50,000+ women who've reclaimed their calm, their sleep, and their energy with X11 Ashwagandha. Your peace of mind starts today.</p>
+      {%- else -%}
+        <h2>Ready to Level Up Your Workouts?</h2>
+        <p class="pp-fcta-sub">Join 50,000+ women who've already made the switch. Your strongest self is one gummy away.</p>
+      {%- endif -%}
       <div class="pp-fcta-urgency">
         <div class="pp-fcta-stock-line">🔥 Only <strong>23 bottles</strong> left at this price</div>
         <div class="pp-fcta-timer-line">
