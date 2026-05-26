@@ -33,7 +33,9 @@
                width="800" height="1000"
                class="pp-main-img" />
         {%- endif -%}
-        <div class="pp-img-badge">#1 Women's Creatine Gummy</div>
+        {%- if section.settings.hero_badge != blank -%}
+          <div class="pp-img-badge">{{ section.settings.hero_badge }}</div>
+        {%- endif -%}
       </div>
 
       {%- if product.images.size > 1 -%}
@@ -74,7 +76,13 @@
       </div>
 
       <h1 class="pp-title">{{ product.title }}</h1>
-      <p class="pp-subtitle">5,000mg of pure creatine in a delicious strawberry gummy — the daily ritual your muscles have been waiting for.</p>
+      <p class="pp-subtitle">
+        {%- if section.settings.hero_subtitle != blank -%}
+          {{ section.settings.hero_subtitle }}
+        {%- elsif product.description != blank -%}
+          {{ product.description | strip_html | truncate: 160 }}
+        {%- endif -%}
+      </p>
 
       <div class="pp-pricing-row" id="pp-pricing">
         <span class="pp-price" id="pp-price">{{ selected_variant.price | money }}</span>
@@ -85,7 +93,7 @@
           </span>
         {%- endif -%}
       </div>
-      <div class="pp-per-serving">Only <strong>{{ selected_variant.price | divided_by: 30 | money }}</strong>/serving — less than a cup of coffee ☕</div>
+      <div class="pp-per-serving" id="pp-per-serving">Only <strong>{{ selected_variant.price | divided_by: 30 | money }}</strong>/serving — less than a cup of coffee ☕</div>
 
       <div class="pp-stock-line">
         <span class="pp-stock-pulse"></span>
@@ -170,7 +178,10 @@
           </span>
           <span class="pp-pay-badge">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-            Visa / MC
+            Visa · MC · Amex
+          </span>
+          <span class="pp-pay-badge pp-pay-more">
+            + Discover &amp; more
           </span>
         </div>
       </div>
@@ -199,7 +210,7 @@
       <div class="pp-quick-list">
         <div class="pp-ql-item">💪 5,000mg Creatine Monohydrate — the clinically proven dose</div>
         <div class="pp-ql-item">🍓 Delicious strawberry — no chalk, no grit, no mixing</div>
-        <div class="pp-ql-item">🧪 3rd-party lab tested · GMP certified · Made in USA</div>
+        <div class="pp-ql-item">🧪 Science-backed formula · 5,000mg clinically studied dose</div>
         <div class="pp-ql-item">✈ 60 gummies = 30 servings · One bottle = 30-day supply</div>
       </div>
     </div>
@@ -285,62 +296,82 @@
         <p style="color:rgba(255,255,255,.6)">Don't take our word for it — thousands of women have already transformed their workouts with X11.</p>
       </div>
       <div class="pp-video-grid">
+
+        <!-- Video 1 -->
         <div class="pp-video-card">
           <div class="pp-video-wrap">
-            <img src="{{ 'ad-9x16-01.png' | asset_url }}"
-                 alt="Jessica M — customer testimonial video thumbnail"
-                 class="pp-video-thumb" loading="lazy" />
-            <div class="pp-video-overlay" role="button" tabindex="0" aria-label="Play customer video">
-              <div class="pp-play-circle">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-            </div>
-            <div class="pp-video-label">Customer Video ▶</div>
+            {%- if section.settings.video_1_url != blank -%}
+              <iframe src="{{ section.settings.video_1_url }}"
+                      class="pp-video-iframe"
+                      frameborder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowfullscreen
+                      title="Customer testimonial video 1"
+                      loading="lazy"></iframe>
+            {%- else -%}
+              <img src="{{ 'ad-9x16-01.png' | asset_url }}"
+                   alt="{{ section.settings.video_1_name | default: 'Customer testimonial' }}"
+                   class="pp-video-thumb" loading="lazy" />
+              <div class="pp-no-video-badge">📸 Customer Photo</div>
+            {%- endif -%}
           </div>
           <div class="pp-vm">
             <div class="pp-vm-stars">★★★★★</div>
-            <strong class="pp-vm-name">Jessica M. — Dallas, TX</strong>
-            <p class="pp-vm-quote">"Gained 15lbs on bench press in 6 weeks. Game changer! 🔥"</p>
+            <strong class="pp-vm-name">{{ section.settings.video_1_name | default: 'Jessica M. — Dallas, TX' }}</strong>
+            <p class="pp-vm-quote">{{ section.settings.video_1_quote | default: '"Gained 15lbs on bench press in 6 weeks. Game changer! 🔥"' }}</p>
           </div>
         </div>
 
+        <!-- Video 2 -->
         <div class="pp-video-card pp-video-card-center">
           <div class="pp-video-wrap">
-            <img src="{{ 'ad-9x16-03.png' | asset_url }}"
-                 alt="Sarah K — customer testimonial video thumbnail"
-                 class="pp-video-thumb" loading="lazy" />
-            <div class="pp-video-overlay" role="button" tabindex="0" aria-label="Play customer video">
-              <div class="pp-play-circle">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-            </div>
-            <div class="pp-video-label">Customer Video ▶</div>
+            {%- if section.settings.video_2_url != blank -%}
+              <iframe src="{{ section.settings.video_2_url }}"
+                      class="pp-video-iframe"
+                      frameborder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowfullscreen
+                      title="Customer testimonial video 2"
+                      loading="lazy"></iframe>
+            {%- else -%}
+              <img src="{{ 'ad-9x16-03.png' | asset_url }}"
+                   alt="{{ section.settings.video_2_name | default: 'Customer testimonial' }}"
+                   class="pp-video-thumb" loading="lazy" />
+              <div class="pp-no-video-badge">📸 Customer Photo</div>
+            {%- endif -%}
           </div>
           <div class="pp-vm">
             <div class="pp-vm-stars">★★★★★</div>
-            <strong class="pp-vm-name">Sarah K. — Austin, TX</strong>
-            <p class="pp-vm-quote">"Recovery is insane now. I'm back in the gym faster than ever."</p>
+            <strong class="pp-vm-name">{{ section.settings.video_2_name | default: 'Sarah K. — Austin, TX' }}</strong>
+            <p class="pp-vm-quote">{{ section.settings.video_2_quote | default: '"Recovery is insane now. I\'m back in the gym faster than ever."' }}</p>
           </div>
         </div>
 
+        <!-- Video 3 -->
         <div class="pp-video-card">
           <div class="pp-video-wrap">
-            <img src="{{ 'ad-4x5-05.png' | asset_url }}"
-                 alt="Ashley T — customer testimonial video thumbnail"
-                 class="pp-video-thumb" loading="lazy" />
-            <div class="pp-video-overlay" role="button" tabindex="0" aria-label="Play customer video">
-              <div class="pp-play-circle">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-            </div>
-            <div class="pp-video-label">Customer Video ▶</div>
+            {%- if section.settings.video_3_url != blank -%}
+              <iframe src="{{ section.settings.video_3_url }}"
+                      class="pp-video-iframe"
+                      frameborder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowfullscreen
+                      title="Customer testimonial video 3"
+                      loading="lazy"></iframe>
+            {%- else -%}
+              <img src="{{ 'ad-4x5-05.png' | asset_url }}"
+                   alt="{{ section.settings.video_3_name | default: 'Customer testimonial' }}"
+                   class="pp-video-thumb" loading="lazy" />
+              <div class="pp-no-video-badge">📸 Customer Photo</div>
+            {%- endif -%}
           </div>
           <div class="pp-vm">
             <div class="pp-vm-stars">★★★★★</div>
-            <strong class="pp-vm-name">Ashley T. — Miami, FL</strong>
-            <p class="pp-vm-quote">"Finally a creatine that actually tastes amazing 😍 I'm obsessed."</p>
+            <strong class="pp-vm-name">{{ section.settings.video_3_name | default: 'Ashley T. — Miami, FL' }}</strong>
+            <p class="pp-vm-quote">{{ section.settings.video_3_quote | default: '"Finally a creatine that actually tastes amazing 😍 I\'m obsessed."' }}</p>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -540,14 +571,13 @@
               <span>✓ Soy Free</span>
               <span>✓ No Artificial Colors</span>
               <span>✓ No Animal Gelatin</span>
-              <span>✓ Made in USA</span>
             </div>
           </div>
           <div class="pp-cert-row">
-            <div class="pp-cert"><span>🏆</span><small>GMP Certified</small></div>
-            <div class="pp-cert"><span>🔬</span><small>3rd Party Tested</small></div>
-            <div class="pp-cert"><span>🇺🇸</span><small>Made in USA</small></div>
-            <div class="pp-cert"><span>🌱</span><small>100% Vegan</small></div>
+            <div class="pp-cert"><span>⭐</span><small>4.9 Star<br>Rated</small></div>
+            <div class="pp-cert"><span>🚚</span><small>Fast<br>Shipping</small></div>
+            <div class="pp-cert"><span>💰</span><small>30-Day<br>Guarantee</small></div>
+            <div class="pp-cert"><span>🌱</span><small>100%<br>Vegan</small></div>
           </div>
         </div>
       </div>
@@ -655,7 +685,7 @@
   <div class="pp-final-cta">
     <div class="pp-fcta-overlay"></div>
     <div class="container pp-fcta-inner">
-      <img src="{{ 'logo-tagline-light.png' | asset_url }}" alt="X11 Supplements" class="pp-fcta-logo" />
+      <img src="{{ 'logo-white.png' | asset_url }}" alt="X11 Supplements" class="pp-fcta-logo" />
       <span class="eyebrow eyebrow-light">Limited Time Offer</span>
       <h2>Ready to Level Up Your Workouts?</h2>
       <p class="pp-fcta-sub">Join 50,000+ women who've already made the switch. Your strongest self is one gummy away.</p>
@@ -676,7 +706,7 @@
         <span>🍎 Apple Pay</span>
         <span>G Google Pay</span>
         <span>🛍 Shop Pay</span>
-        <span>💳 Visa / MC</span>
+        <span>💳 Visa · MC · Amex · Discover + more</span>
       </div>
       <p class="pp-fcta-small">🔒 SSL Secure Checkout &nbsp;·&nbsp; 30-Day Money-Back Guarantee &nbsp;·&nbsp; Free Shipping $50+</p>
     </div>
@@ -705,9 +735,96 @@
   <button class="sp-close" id="sp-close" aria-label="Close notification">×</button>
 </div>
 
+<script type="application/json" id="pp-variants-json">
+  {{ product.variants | json }}
+</script>
+
 {% schema %}
 {
   "name": "Product Main",
-  "settings": []
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_badge",
+      "label": "Product image badge",
+      "info": "Small label shown on the product image. Leave blank to hide. E.g. #1 Women's Creatine Gummy"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero subtitle",
+      "info": "Short tagline under the product title. Leave blank to use the product description."
+    },
+    {
+      "type": "header",
+      "content": "Testimonial Video 1"
+    },
+    {
+      "type": "text",
+      "id": "video_1_url",
+      "label": "Video 1 — Embed URL",
+      "info": "YouTube: https://www.youtube.com/embed/VIDEO_ID  |  TikTok/Vimeo also work. Leave blank to show photo."
+    },
+    {
+      "type": "text",
+      "id": "video_1_name",
+      "label": "Video 1 — Customer name & location",
+      "default": "Jessica M. — Dallas, TX"
+    },
+    {
+      "type": "text",
+      "id": "video_1_quote",
+      "label": "Video 1 — Customer quote",
+      "default": "\"Gained 15lbs on bench press in 6 weeks. Game changer! 🔥\""
+    },
+    {
+      "type": "header",
+      "content": "Testimonial Video 2"
+    },
+    {
+      "type": "text",
+      "id": "video_2_url",
+      "label": "Video 2 — Embed URL",
+      "info": "YouTube: https://www.youtube.com/embed/VIDEO_ID  |  Leave blank to show photo."
+    },
+    {
+      "type": "text",
+      "id": "video_2_name",
+      "label": "Video 2 — Customer name & location",
+      "default": "Sarah K. — Austin, TX"
+    },
+    {
+      "type": "text",
+      "id": "video_2_quote",
+      "label": "Video 2 — Customer quote",
+      "default": "\"Recovery is insane now. I'm back in the gym faster than ever.\""
+    },
+    {
+      "type": "header",
+      "content": "Testimonial Video 3"
+    },
+    {
+      "type": "text",
+      "id": "video_3_url",
+      "label": "Video 3 — Embed URL",
+      "info": "YouTube: https://www.youtube.com/embed/VIDEO_ID  |  Leave blank to show photo."
+    },
+    {
+      "type": "text",
+      "id": "video_3_name",
+      "label": "Video 3 — Customer name & location",
+      "default": "Ashley T. — Miami, FL"
+    },
+    {
+      "type": "text",
+      "id": "video_3_quote",
+      "label": "Video 3 — Customer quote",
+      "default": "\"Finally a creatine that actually tastes amazing 😍 I'm obsessed.\""
+    }
+  ]
 }
 {% endschema %}

@@ -21,6 +21,68 @@
     });
   });
 
+  /* Load product variants for price matching */
+  let ppVariants = [];
+  try {
+    const variantsEl = document.getElementById('pp-variants-json');
+    if (variantsEl) ppVariants = JSON.parse(variantsEl.textContent);
+  } catch(e) {}
+
+  function ppFormatMoney(cents) {
+    return '$' + (cents / 100).toFixed(2).replace(/\.00$/, '');
+  }
+
+  function ppGetSelectedOptions() {
+    const sel = {};
+    document.querySelectorAll('.pp-opt-btn.active').forEach(b => {
+      sel[b.dataset.option] = b.dataset.value;
+    });
+    return sel;
+  }
+
+  function ppFindVariant(selected) {
+    return ppVariants.find(v =>
+      v.options.every((opt, i) => selected[String(i + 1)] === opt)
+    );
+  }
+
+  function ppUpdatePricing(variant) {
+    if (!variant) return;
+    const priceEl   = document.getElementById('pp-price');
+    const compareEl = document.getElementById('pp-compare');
+    const saveEl    = document.getElementById('pp-save-chip');
+    const atcBtn    = document.getElementById('pi-atc-btn');
+    const vidEl     = document.getElementById('variant-id');
+    const perSrv    = document.getElementById('pp-per-serving');
+
+    if (vidEl) vidEl.value = variant.id;
+    if (priceEl) priceEl.textContent = ppFormatMoney(variant.price);
+
+    if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+      if (compareEl) { compareEl.textContent = ppFormatMoney(variant.compare_at_price); compareEl.style.display = ''; }
+      if (saveEl) {
+        const pct = Math.round((variant.compare_at_price - variant.price) * 100 / variant.compare_at_price);
+        saveEl.textContent = `SAVE ${pct}%`;
+        saveEl.style.display = '';
+      }
+    } else {
+      if (compareEl) compareEl.style.display = 'none';
+      if (saveEl) saveEl.style.display = 'none';
+    }
+
+    if (perSrv) {
+      const perServingCents = Math.round(variant.price / 30);
+      perSrv.innerHTML = `Only <strong>${ppFormatMoney(perServingCents)}</strong>/serving — less than a cup of coffee ☕`;
+    }
+
+    if (atcBtn) {
+      atcBtn.disabled = !variant.available;
+      atcBtn.innerHTML = variant.available
+        ? `🛒 &nbsp;Add to Cart — ${ppFormatMoney(variant.price)}`
+        : 'Sold Out';
+    }
+  }
+
   /* Variant option buttons */
   document.querySelectorAll('.pp-opt-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -30,6 +92,10 @@
       const opt = btn.dataset.option;
       const selectedEl = document.querySelector(`.pp-option-selected[data-pp-opt="${opt}"]`);
       if (selectedEl) selectedEl.textContent = btn.dataset.value;
+
+      /* Update price for matched variant */
+      const variant = ppFindVariant(ppGetSelectedOptions());
+      if (variant) ppUpdatePricing(variant);
     });
   });
 
@@ -432,17 +498,22 @@ if (productForm) {
 
     if (!variantId) return;
 
+    const originalHTML = btn.innerHTML;
     btn.disabled = true;
-    btn.textContent = 'Adding…';
+    btn.innerHTML = 'Adding…';
+    if (feedback) { feedback.textContent = ''; feedback.className = 'pp-atc-feedback'; }
 
     try {
       const res = await fetch('/cart/add.js', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: variantId, quantity: qty })
+        headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+        body: JSON.stringify({ id: parseInt(variantId, 10), quantity: qty })
       });
 
-      if (!res.ok) throw new Error('Add to cart failed');
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.description || errData.message || `Error ${res.status}`);
+      }
 
       const cartRes = await fetch('/cart.js');
       const cartData = await cartRes.json();
@@ -457,12 +528,12 @@ if (productForm) {
       openCartDrawer();
     } catch (err) {
       if (feedback) {
-        feedback.textContent = 'Something went wrong. Please try again.';
+        feedback.textContent = err.message || 'Could not add to cart. Please try again.';
         feedback.className = 'pp-atc-feedback error';
       }
     } finally {
       btn.disabled = false;
-      btn.innerHTML = '🛒 &nbsp;Add to Cart';
+      btn.innerHTML = originalHTML;
     }
   });
 }
