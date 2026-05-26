@@ -208,17 +208,17 @@
 
       <!-- Quick highlights -->
       <div class="pp-quick-list">
-        {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+        {%- if pp_h contains 'detox' -%}
           <div class="pp-ql-item">🌊 3,200mg Sea Moss Blend — 92 trace minerals your body craves</div>
           <div class="pp-ql-item">🌿 Supports gut health, natural detox &amp; radiant skin</div>
           <div class="pp-ql-item">💧 Apple Cider Vinegar for metabolism &amp; blood sugar balance</div>
           <div class="pp-ql-item">✈ 60 gummies = 30 servings · One bottle = 30-day supply</div>
-        {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+        {%- elsif pp_h contains 'energy-wellness' -%}
           <div class="pp-ql-item">🍄 2,500mg of 10 powerhouse functional mushrooms per serving</div>
           <div class="pp-ql-item">🧠 Lion's Mane for focus &amp; cognitive clarity — zero caffeine jitters</div>
           <div class="pp-ql-item">⚡ Cordyceps for natural energy, stamina &amp; endurance</div>
           <div class="pp-ql-item">✈ 60 gummies = 30 servings · One bottle = 30-day supply</div>
-        {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+        {%- elsif pp_h contains 'ashwagandha' -%}
           <div class="pp-ql-item">🌿 1,500mg KSM-66 Ashwagandha — the world's most studied adaptogen</div>
           <div class="pp-ql-item">😌 Clinically proven to reduce cortisol by up to 28% in 60 days</div>
           <div class="pp-ql-item">💊 Vitamin D3 &amp; Zinc for immune defense + hormonal balance</div>
@@ -264,7 +264,7 @@
   <div class="pp-benefits-section">
     <div class="container">
 
-      {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+      {%- if pp_h contains 'detox' -%}
       <div class="pp-sec-header">
         <span class="eyebrow">Why Women Love It</span>
         <h2>Finally. Detox That <em>Actually</em> Works</h2>
@@ -304,7 +304,7 @@
         </div>
       </div>
 
-      {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+      {%- elsif pp_h contains 'energy-wellness' -%}
       <div class="pp-sec-header">
         <span class="eyebrow">Why Women Love It</span>
         <h2>10 Mushrooms. One Powerhouse Gummy.</h2>
@@ -344,7 +344,7 @@
         </div>
       </div>
 
-      {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+      {%- elsif pp_h contains 'ashwagandha' -%}
       <div class="pp-sec-header">
         <span class="eyebrow">Why Women Love It</span>
         <h2>Calm Your Mind. Strengthen Your Body.</h2>
@@ -522,11 +522,11 @@
     <div class="container">
       <div class="pp-sec-header">
         <span class="eyebrow">2,400+ Verified Reviews</span>
-        {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+        {%- if pp_h contains 'detox' -%}
           <h2>Women Are Obsessed With X11 Sea Moss Gummies</h2>
-        {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+        {%- elsif pp_h contains 'energy-wellness' -%}
           <h2>Women Are Obsessed With X11 Mushroom Gummies</h2>
-        {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+        {%- elsif pp_h contains 'ashwagandha' -%}
           <h2>Women Are Obsessed With X11 Ashwagandha Gummies</h2>
         {%- else -%}
           <h2>Women Are Obsessed With X11 Creatine Gummies</h2>
@@ -539,7 +539,7 @@
 
       <div class="pp-reviews-grid">
 
-        {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+        {%- if pp_h contains 'detox' -%}
 
         <div class="pp-review-card">
           <div class="pp-rc-top">
@@ -607,7 +607,7 @@
           <span class="pp-rc-date">March 2024 · Houston, TX</span>
         </div>
 
-        {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+        {%- elsif pp_h contains 'energy-wellness' -%}
 
         <div class="pp-review-card">
           <div class="pp-rc-top">
@@ -675,7 +675,7 @@
           <span class="pp-rc-date">March 2024 · Nashville, TN</span>
         </div>
 
-        {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+        {%- elsif pp_h contains 'ashwagandha' -%}
 
         <div class="pp-review-card">
           <div class="pp-rc-top">
@@ -832,7 +832,7 @@
   <div class="pp-how-section">
     <div class="container">
 
-      {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+      {%- if pp_h contains 'detox' -%}
       <div class="pp-sec-header">
         <span class="eyebrow">Simple as 1–2–3</span>
         <h2>Your New Wellness Ritual</h2>
@@ -863,7 +863,7 @@
         🔬 Best results with consistent daily use. Most customers see their best results by week 4–6.
       </div>
 
-      {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+      {%- elsif pp_h contains 'energy-wellness' -%}
       <div class="pp-sec-header">
         <span class="eyebrow">Simple as 1–2–3</span>
         <h2>Your New Morning Ritual</h2>
@@ -894,7 +894,7 @@
         🔬 Results improve with consistent daily use. Most customers report feeling peak benefits between weeks 3–6.
       </div>
 
-      {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+      {%- elsif pp_h contains 'ashwagandha' -%}
       <div class="pp-sec-header">
         <span class="eyebrow">Simple as 1–2–3</span>
         <h2>Your New Evening Ritual</h2>
@@ -965,7 +965,7 @@
     <div class="container">
       <div class="pp-sci-grid">
 
-        {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+        {%- if pp_h contains 'detox' -%}
         <div class="pp-sci-text">
           <span class="eyebrow eyebrow-light">The Science</span>
           <h2 style="color:#fff">92 Minerals. Centuries of Wisdom. Modern Proof.</h2>
@@ -1022,7 +1022,7 @@
           </div>
         </div>
 
-        {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+        {%- elsif pp_h contains 'energy-wellness' -%}
         <div class="pp-sci-text">
           <span class="eyebrow eyebrow-light">The Science</span>
           <h2 style="color:#fff">2,000 Years of Wisdom. Proven by Modern Research.</h2>
@@ -1079,7 +1079,7 @@
           </div>
         </div>
 
-        {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+        {%- elsif pp_h contains 'ashwagandha' -%}
         <div class="pp-sci-text">
           <span class="eyebrow eyebrow-light">The Science</span>
           <h2 style="color:#fff">600+ Studies Confirm: Ashwagandha Changes Everything.</h2>
@@ -1229,7 +1229,7 @@
       </div>
       <div class="pp-faq-list">
 
-        {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+        {%- if pp_h contains 'detox' -%}
 
         <div class="pp-faq-item">
           <button class="pp-faq-q" aria-expanded="false">
@@ -1271,7 +1271,7 @@
           </div>
         </div>
 
-        {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+        {%- elsif pp_h contains 'energy-wellness' -%}
 
         <div class="pp-faq-item">
           <button class="pp-faq-q" aria-expanded="false">
@@ -1313,7 +1313,7 @@
           </div>
         </div>
 
-        {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+        {%- elsif pp_h contains 'ashwagandha' -%}
 
         <div class="pp-faq-item">
           <button class="pp-faq-q" aria-expanded="false">
@@ -1429,13 +1429,13 @@
     <div class="container pp-fcta-inner">
       <img src="{{ 'logo-white.png' | asset_url }}" alt="X11 Supplements" class="pp-fcta-logo" />
       <span class="eyebrow eyebrow-light">Limited Time Offer</span>
-      {%- if pp_h == 'x11-vegan-detox-gummies-sea-moss-bladderwrack-burdock-root-acv-3200mg' -%}
+      {%- if pp_h contains 'detox' -%}
         <h2>Ready to Cleanse, Nourish &amp; Glow?</h2>
         <p class="pp-fcta-sub">Join 50,000+ women who've discovered the power of sea moss. Your healthiest, most radiant self starts from the inside.</p>
-      {%- elsif pp_h == 'x11-vegan-energy-wellness-gummies-10-in-1-functional-mushroom-blend-2500mg' -%}
+      {%- elsif pp_h contains 'energy-wellness' -%}
         <h2>Ready to Think Clearer, Feel Stronger &amp; Sleep Better?</h2>
         <p class="pp-fcta-sub">Join 50,000+ women who've unlocked the power of functional mushrooms. Your best brain and body start today.</p>
-      {%- elsif pp_h == 'x11-vegan-stress-immune-support-gummies-ashwagandha-vitamin-d3-zinc-1500mg' -%}
+      {%- elsif pp_h contains 'ashwagandha' -%}
         <h2>Ready to Finally Feel Like Yourself Again?</h2>
         <p class="pp-fcta-sub">Join 50,000+ women who've reclaimed their calm, their sleep, and their energy with X11 Ashwagandha. Your peace of mind starts today.</p>
       {%- else -%}
