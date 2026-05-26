@@ -1,5 +1,154 @@
 /* X11 Supplements Theme — Interactive JS */
 
+/* ── HIGH-CONVERSION PRODUCT PAGE ───────────────────────── */
+(function initProductPage() {
+
+  /* Mark body so CSS can add bottom padding for sticky bar */
+  if (document.querySelector('.pp-main')) {
+    document.body.classList.add('pp-on-product');
+  }
+
+  /* Gallery thumbnails */
+  document.querySelectorAll('.pp-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const mainImg = document.getElementById('pp-main-img');
+      if (mainImg && thumb.dataset.ppSrc) {
+        mainImg.src = thumb.dataset.ppSrc;
+        mainImg.alt = thumb.dataset.ppAlt || '';
+      }
+      document.querySelectorAll('.pp-thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    });
+  });
+
+  /* Variant option buttons */
+  document.querySelectorAll('.pp-opt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest('.pp-option-btns');
+      if (group) group.querySelectorAll('.pp-opt-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const opt = btn.dataset.option;
+      const selectedEl = document.querySelector(`.pp-option-selected[data-pp-opt="${opt}"]`);
+      if (selectedEl) selectedEl.textContent = btn.dataset.value;
+    });
+  });
+
+  /* Qty +/- */
+  const ppQtyInput    = document.getElementById('qty-input');
+  const ppQtyDecrease = document.getElementById('qty-decrease');
+  const ppQtyIncrease = document.getElementById('qty-increase');
+  if (ppQtyInput && ppQtyDecrease && ppQtyIncrease) {
+    ppQtyDecrease.addEventListener('click', () => {
+      const v = parseInt(ppQtyInput.value);
+      if (v > 1) ppQtyInput.value = v - 1;
+    });
+    ppQtyIncrease.addEventListener('click', () => {
+      const v = parseInt(ppQtyInput.value);
+      if (v < 99) ppQtyInput.value = v + 1;
+    });
+  }
+
+  /* Sticky buy bar — show after buy box scrolls out of view */
+  const ppStickyBar = document.getElementById('pp-sticky-bar');
+  const ppBuyBox    = document.querySelector('.pp-buy-box');
+  if (ppStickyBar && ppBuyBox) {
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        const show = !entry.isIntersecting;
+        ppStickyBar.style.display = show ? 'flex' : 'none';
+        ppStickyBar.setAttribute('aria-hidden', !show);
+      },
+      { threshold: 0, rootMargin: '0px 0px 0px 0px' }
+    );
+    obs.observe(ppBuyBox);
+  }
+
+  /* Sticky bar "Add to Cart" — scroll to buy box on desktop, submit form on mobile */
+  const ppSbAtc = document.getElementById('pp-sb-atc');
+  if (ppSbAtc) {
+    ppSbAtc.addEventListener('click', () => {
+      const form = document.getElementById('product-form');
+      if (window.innerWidth < 640 && form) {
+        form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+      } else {
+        const box = document.querySelector('.pp-buy-box');
+        if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+
+  /* FAQ accordion */
+  document.querySelectorAll('.pp-faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item   = q.closest('.pp-faq-item');
+      const answer = item.querySelector('.pp-faq-a');
+      const isOpen = q.getAttribute('aria-expanded') === 'true';
+
+      /* Close all */
+      document.querySelectorAll('.pp-faq-item').forEach(other => {
+        other.classList.remove('pp-faq-open');
+        other.querySelector('.pp-faq-q').setAttribute('aria-expanded', 'false');
+        const a = other.querySelector('.pp-faq-a');
+        if (a) a.hidden = true;
+      });
+
+      if (!isOpen) {
+        item.classList.add('pp-faq-open');
+        q.setAttribute('aria-expanded', 'true');
+        answer.hidden = false;
+      }
+    });
+  });
+
+  /* Final CTA scroll button */
+  document.querySelectorAll('.pp-fcta-cta-btn, .pp-reviews-btn').forEach(btn => {
+    if (btn.tagName === 'A' && btn.getAttribute('href') === '#top') {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const box = document.querySelector('.pp-buy-box');
+        if (box) {
+          box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    }
+  });
+
+})();
+
+/* ── PRODUCT PAGE COUNTDOWN (multi-element) ──────────────── */
+(function initPPCountdown() {
+  const DURATION_MS = 14 * 60 * 60 * 1000;
+  const KEY = 'x11_pp_cd_end';
+  let endTime = parseInt(localStorage.getItem(KEY) || '0');
+  if (!endTime || endTime < Date.now()) {
+    endTime = Date.now() + DURATION_MS;
+    localStorage.setItem(KEY, endTime);
+  }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function tick() {
+    const diff = Math.max(0, endTime - Date.now());
+    if (diff === 0) {
+      endTime = Date.now() + DURATION_MS;
+      localStorage.setItem(KEY, endTime);
+    }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.querySelectorAll('[data-pp-cd-h]').forEach(el => { el.textContent = pad(h); });
+    document.querySelectorAll('[data-pp-cd-m]').forEach(el => { el.textContent = pad(m); });
+    document.querySelectorAll('[data-pp-cd-s]').forEach(el => { el.textContent = pad(s); });
+  }
+
+  if (document.querySelector('[data-pp-cd-h]')) {
+    tick();
+    setInterval(tick, 1000);
+  }
+})();
+
+
 /* ── Announcement bar close ─────────────────────────────── */
 const annClose = document.getElementById('ann-close');
 const annBar   = document.getElementById('announcement-bar');
@@ -213,7 +362,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 /* ── Scroll-reveal animations ─────────────────────────────── */
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const els = document.querySelectorAll(
-    '.benefit-card, .review-card, .ugc-card, .step, .science-point, .faq-item, .gallery-item, .fcta-option, .product-card, .bv-card'
+    '.benefit-card, .review-card, .ugc-card, .step, .science-point, .faq-item, .gallery-item, .fcta-option, .product-card, .bv-card, .pp-benefit-card, .pp-review-card, .pp-video-card, .pp-step, .pp-sci-pt, .pp-faq-item'
   );
   const io = new IntersectionObserver(
     entries => entries.forEach(e => {
@@ -301,7 +450,7 @@ if (productForm) {
 
       if (feedback) {
         feedback.textContent = '✓ Added to cart!';
-        feedback.className = 'pi-atc-feedback';
+        feedback.className = 'pp-atc-feedback';
         setTimeout(() => { feedback.textContent = ''; }, 3000);
       }
 
@@ -309,50 +458,12 @@ if (productForm) {
     } catch (err) {
       if (feedback) {
         feedback.textContent = 'Something went wrong. Please try again.';
-        feedback.className = 'pi-atc-feedback error';
+        feedback.className = 'pp-atc-feedback error';
       }
     } finally {
       btn.disabled = false;
-      btn.textContent = 'Add to Cart';
+      btn.innerHTML = '🛒 &nbsp;Add to Cart';
     }
-  });
-}
-
-/* ── Product page gallery thumbnails ─────────────────────── */
-document.querySelectorAll('.pg-thumb').forEach(thumb => {
-  thumb.addEventListener('click', () => {
-    const mainImg = document.getElementById('pg-main-img');
-    if (mainImg) {
-      mainImg.src = thumb.dataset.src;
-      mainImg.alt = thumb.dataset.alt || '';
-    }
-    document.querySelectorAll('.pg-thumb').forEach(t => t.classList.remove('active'));
-    thumb.classList.add('active');
-  });
-});
-
-/* ── Product page variant option selection ───────────────── */
-document.querySelectorAll('.pi-option-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const group = btn.closest('.pi-option-values');
-    if (group) group.querySelectorAll('.pi-option-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    // Variant matching would require Shopify JS Buy SDK or section rendering
-  });
-});
-
-/* ── Product page qty +/- ─────────────────────────────────── */
-const qtyInput    = document.getElementById('qty-input');
-const qtyDecrease = document.getElementById('qty-decrease');
-const qtyIncrease = document.getElementById('qty-increase');
-if (qtyInput && qtyDecrease && qtyIncrease) {
-  qtyDecrease.addEventListener('click', () => {
-    const v = parseInt(qtyInput.value);
-    if (v > 1) qtyInput.value = v - 1;
-  });
-  qtyIncrease.addEventListener('click', () => {
-    const v = parseInt(qtyInput.value);
-    if (v < 99) qtyInput.value = v + 1;
   });
 }
 
@@ -413,18 +524,3 @@ document.querySelectorAll('.cp-remove').forEach(btn => {
   });
 });
 
-/* ── Product tabs ─────────────────────────────────────────── */
-document.querySelectorAll('.pi-tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const tabName = btn.dataset.tab;
-    document.querySelectorAll('.pi-tab-btn').forEach(b => {
-      b.classList.remove('active');
-      b.setAttribute('aria-selected', 'false');
-    });
-    document.querySelectorAll('.pi-tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    btn.setAttribute('aria-selected', 'true');
-    const panel = document.getElementById(`tab-${tabName}`);
-    if (panel) panel.classList.add('active');
-  });
-});
